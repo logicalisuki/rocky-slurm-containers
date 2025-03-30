@@ -1,7 +1,7 @@
 FROM rockylinux:9
 
 # Install only the necessary dependencies
-RUN dnf update && \
+RUN dnf update -y && \
     dnf install -y adcli && \
     dnf clean all
 

@@ -9,7 +9,7 @@ RUN dnf update && dnf install -y \
     dnf clean all
 
 # Install Easy Build
-RUN  pipx install --include-deps easybuild \
+RUN  pipx install --include-deps easybuild && \
      pipx ensurepath
 
 # Ensure Munge is set up

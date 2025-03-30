@@ -23,6 +23,9 @@ RUN dnf install -y epel-release &&  dnf config-manager --set-enabled crb && dnf 
 # Set Slurm version
 ARG SLURM_VERSION=24.11.1
 
+# Create munge key
+RUN /usr/sbin/create-munge-key
+
 # Ensure the munge group and user exist
 RUN getent group munge || groupadd -r munge && \
     id -u munge || useradd -r -g munge munge
