@@ -60,7 +60,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/slurm-base:${{ github.event.release.tag_name || 'latest' }}
+          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/rocky-slurm-base:${{ github.event.release.tag_name || 'latest' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
       
@@ -71,7 +71,7 @@ jobs:
           context: .
           file: Dockerfile-controller
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/slurm-controller:${{ github.event.release.tag_name || 'latest' }}
+          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/rocky-slurm-controller:${{ github.event.release.tag_name || 'latest' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -82,7 +82,7 @@ jobs:
           context: .
           file: Dockerfile-database
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/slurm-database:${{ github.event.release.tag_name || 'latest' }}
+          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/rocky-slurm-database:${{ github.event.release.tag_name || 'latest' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -93,7 +93,7 @@ jobs:
           context: .
           file: Dockerfile-worker
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/slurm-worker:${{ github.event.release.tag_name || 'latest' }}
+          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/rocky-slurm-worker:${{ github.event.release.tag_name || 'latest' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -104,7 +104,7 @@ jobs:
           context: .
           file: Dockerfile-login
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/slurm-login:${{ github.event.release.tag_name || 'latest' }}
+          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/rocky-slurm-login:${{ github.event.release.tag_name || 'latest' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -115,6 +115,6 @@ jobs:
           context: .
           file: Dockerfile-adcli
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/slurm-adcli:${{ github.event.release.tag_name || 'latest' }}
+          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/rocky-slurm-adcli:${{ github.event.release.tag_name || 'latest' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

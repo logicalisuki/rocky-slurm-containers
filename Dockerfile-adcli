@@ -1,10 +1,9 @@
-FROM ubuntu:24.04
+FROM rockylinux:9
 
 # Install only the necessary dependencies
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends adcli && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN dnf update && \
+    dnf install -y adcli && \
+    dnf clean all
 
 # Set default command
 CMD ["adcli", "--help"]

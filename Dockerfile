@@ -3,31 +3,22 @@
 ##downloading and installing a version of slurm
 #RUN wget https://download.schedmd.com/slurm/slurm-24.11.0-0rc2.tar.bz2 && tar -xaf slurm-24.11.0-0rc2.tar.bz2 && cd slurm-24.11.0-0rc2 && mk-build-deps -i debian/control && debuild -b -uc -us 
 # Base Image for Slurm Compilation
-FROM ubuntu:24.04 AS slurm-base
+FROM rockylinux:9 AS slurm-base
 
 # Install dependencies for building Slurm
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    libjson-c-dev \
-    libhttp-parser-dev \
-    libmunge-dev \
-    libmunge2 \
+RUN dnf install -y epel-release &&  dnf config-manager --set-enabled crb && dnf update -y && dnf groupinstall -y "Development Tools" && dnf install -y \
+    json-c-devel \
+    http-parser-devel \
     munge \
-    libssl-dev \
-    libpam0g-dev \
-    python-is-python3 \
+    munge-libs \
+    munge-devel \
     openssl \
-    openssh-client \
-    libjwt-dev \
-    vim \
-    sssd \
-    mariadb-client \
-    mariadb-server \
-    libmariadb-dev-compat \
-    libmariadb-dev && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    openssl-devel \
+    pam-devel \
+    python3 \
+    openssh-clients \
+    libjwt-devel \
+    vim
 
 # Set Slurm version
 ARG SLURM_VERSION=24.11.1
